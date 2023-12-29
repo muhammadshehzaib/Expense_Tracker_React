@@ -19,7 +19,9 @@ export const GlobalProvider = ({ children }) => {
   // Actions
   async function getTransactions(id) {
     try {
-      const res = await axios.get("http://localhost:4001/api/v1/transactions");
+      const res = await axios.get(
+        "expense-tracker-backend-omega.vercel.app/api/v1/transactions"
+      );
 
       dispatch({
         type: "GET_TRANSACTIONS",
@@ -36,7 +38,9 @@ export const GlobalProvider = ({ children }) => {
   async function deleteTransaction(_id) {
     console.log(_id);
     try {
-      await axios.delete(`http://localhost:4001/api/v1/transactions/${_id}`);
+      await axios.delete(
+        `expense-tracker-backend-omega.vercel.app/api/v1/transactions/${_id}`
+      );
       dispatch({
         type: "DELETE_TRANSACTION",
         payload: _id,
@@ -58,7 +62,7 @@ export const GlobalProvider = ({ children }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:4001/api/v1/transactions",
+        "expense-tracker-backend-omega.vercel.app/api/v1/transactions",
         transaction,
         config
       );
