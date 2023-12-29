@@ -9,7 +9,6 @@ export default function AddTransaction() {
   const onSubmit = (e) => {
     e.preventDefault();
     const newTransaction = {
-      id: Math.floor(Math.random() * 100000),
       text,
       amount: +amount,
     };

@@ -5,16 +5,37 @@ import IncomeExpenses from "./components/IncomeExpenses.js";
 import TransactionList from "./components/TransactionList.js";
 import AddTransaction from "./components/AddTransaction.js";
 import { GlobalProvider } from "./components/context/GlobalState.js";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import react, { useEffect } from "react";
+import { motion } from "framer-motion";
+// import { motion } from "framer-motion/dist/framer-motion";
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      // Global settings for AOS (optional)
+      duration: 1000, // Duration of the animation
+      easing: "ease-in-out", // Type of easing
+      once: true, // Whether animation should happen only once
+    });
+  }, []);
   return (
     <GlobalProvider className="App">
       <Header />
       <div className="container">
-        <Balance />
-        <IncomeExpenses />
-        <TransactionList />
-        <AddTransaction />
+        <div data-aos="fade-up">
+          <Balance />
+        </div>
+        <div data-aos="fade-left">
+          <IncomeExpenses />
+        </div>
+        <div data-aos="fade-right">
+          <TransactionList />
+        </div>
+        <div data-aos="fade-up-right">
+          <AddTransaction />
+        </div>
       </div>
     </GlobalProvider>
   );
